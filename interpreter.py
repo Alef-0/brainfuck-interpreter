@@ -14,7 +14,8 @@ def interpreter():
 
     #for factor
     letter = 0
-    quantity = len(code)
+    quantity = len(code) - 1
+    visual = code[letter] #for debug
 
     while flag:
         if code[letter] == '+': memory[pointer] += 1
@@ -22,7 +23,8 @@ def interpreter():
         elif code[letter] == '>': pointer += 1
         elif code[letter] == '<': pointer -= 1
         elif code[letter] == '.': print(chr(memory[pointer]),end='')
-        elif code[letter] == ',': memory[pointer] = ord(input())
+        elif code[letter] == ',': 
+            memory[pointer] = ord(input())
         #Loops
         elif code[letter] == '[':
             if not memory[pointer]:
@@ -42,6 +44,7 @@ def interpreter():
         #Exit Cases
         letter += 1
         if letter > quantity: flag = False
+        else: visual = code[letter]
 
 def validates():
     global code
