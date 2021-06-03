@@ -25,20 +25,20 @@ def interpreter():
         elif code[letter] == '.': print(chr(memory[pointer]), end='')
         elif code[letter] == ',':
             text = input()
-            if len(text) == 0: memory[pointer] = ord('\n')
-            else:              memory[pointer] = ord(text)
+            if not len(text): memory[pointer] = ord('\n')
+            else:             memory[pointer] = ord(text)
         #Loops
         elif code[letter] == '[':
             if not memory[pointer]:
                 brackets += 1
-                while code[letter] != ']' or brackets != 0:
+                while code[letter] != ']' or brackets:
                     letter += 1
                     if   code[letter] == '[': brackets += 1
                     elif code[letter] == ']': brackets -= 1
         elif code[letter] == ']':
             if memory[pointer]:
                 brackets += 1
-                while code[letter] != '[' or brackets != 0:
+                while code[letter] != '[' or brackets:
                     letter -= 1
                     if   code[letter] == ']': brackets += 1
                     elif code[letter] == '[': brackets -= 1
